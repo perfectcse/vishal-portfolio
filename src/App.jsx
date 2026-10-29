@@ -1,82 +1,10 @@
-import React, { useState } from "react";
-import { navigation, siteConfig } from "./data/siteConfig.js";
-import { projects, services, skills } from "./data/projects.js";
-
-function ExternalLink({ href, children, className = "", ...props }) {
-  return (
-    <a
-      className={className}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    >
-      {children}
-    </a>
-  );
-}
-
-function SectionHeading({ eyebrow, title, description, number }) {
-  return (
-    <div className="section-heading">
-      <div>
-        <p className="eyebrow"><span>{number}</span> / {eyebrow}</p>
-        <h2>{title}</h2>
-      </div>
-      {description && <p className="section-intro">{description}</p>}
-    </div>
-  );
-}
-
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  function closeMenu() {
-    setMenuOpen(false);
-  }
-
-  function handleKeyDown(event) {
-    if (event.key === "Escape") closeMenu();
-  }
-
-  return (
-    <header className="site-header">
-      <nav className="nav-shell container" aria-label="Main navigation">
-        <a className="brand" href="#home" onClick={closeMenu} aria-label={`${siteConfig.name}, home`}>
-          <span className="brand-mark" aria-hidden="true">v.</span>
-          <span>vishal<span className="brand-dot">.</span></span>
-        </a>
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-          onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          onKeyDown={handleKeyDown}
-        >
-          <span />
-          <span />
-        </button>
-        <div
-          className={`nav-content${menuOpen ? " is-open" : ""}`}
-          id="primary-navigation"
-        >
-          <div className="nav-links">
-            {navigation.map((item) => (
-              <a key={item.href} href={item.href} onClick={closeMenu}>
-                {item.label}
-              </a>
-            ))}
-          </div>
-          <a className="button button-small button-outline nav-cta" href="#contact" onClick={closeMenu}>
-            Let&apos;s talk <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </nav>
-    </header>
-  );
-}
+import React from "react";
+import { siteConfig } from "./data/siteConfig.js";
+import { services, skills } from "./data/projects.js";
+import ExternalLink from "./components/ExternalLink.jsx";
+import SectionHeading from "./components/SectionHeading.jsx";
+import { Footer, Navbar } from "./components/SiteChrome.jsx";
+import Projects from "./sections/Projects.jsx";
 
 function Hero() {
   return (
@@ -98,7 +26,7 @@ function Hero() {
               Contact me <span aria-hidden="true">↘</span>
             </a>
           </div>
-          <div className="hero-socials" aria-label="Profile links">
+          <nav className="hero-socials" aria-label="Profile links">
             <ExternalLink href={siteConfig.links.github}>GitHub <span aria-hidden="true">↗</span></ExternalLink>
             <span className="social-divider" />
             {siteConfig.links.linkedin ? (
@@ -106,9 +34,9 @@ function Hero() {
             ) : (
               <span className="placeholder-label">{siteConfig.placeholders.linkedin}</span>
             )}
-          </div>
+          </nav>
         </div>
-        <div className="hero-art" aria-label="Decorative code editor illustration">
+        <div className="hero-art" aria-hidden="true">
           <div className="orbit orbit-one" />
           <div className="orbit orbit-two" />
           <div className="editor-window">
@@ -196,83 +124,6 @@ function Skills() {
               </ul>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProjectPreview({ kind }) {
-  if (kind === "rides") {
-    return (
-      <div className="preview preview-rides" aria-hidden="true">
-        <div className="preview-map"><span className="map-road road-one" /><span className="map-road road-two" /><span className="map-road road-three" /><span className="map-pin pin-one" /><span className="map-pin pin-two" /></div>
-        <div className="preview-panel"><span className="preview-kicker">TRIP OVERVIEW</span><strong>Ride request</strong><div className="preview-route"><i /><span /><i /></div><div className="preview-row"><span>Passenger</span><b>Driver</b></div></div>
-      </div>
-    );
-  }
-  if (kind === "holi") {
-    return (
-      <div className="preview preview-holi" aria-hidden="true">
-        <span className="holi-spark spark-one">✳</span><span className="holi-spark spark-two">✦</span><span className="holi-spark spark-three">✳</span>
-        <div className="holi-card"><span>HAPPY</span><strong>Holi!</strong><i>Spread a little color</i><div className="color-dots"><b /><b /><b /><b /></div></div>
-        <span className="preview-caption">A FESTIVE REACT EXPERIENCE</span>
-      </div>
-    );
-  }
-  return (
-    <div className="preview preview-landing" aria-hidden="true">
-      <div className="landing-top"><span className="landing-logo" /><span /><span /><span /></div>
-      <div className="landing-content"><span className="landing-overline" /><strong /><strong className="short-line" /><span className="landing-copy" /><span className="landing-button" /></div>
-      <div className="landing-shape shape-large" /><div className="landing-shape shape-small" />
-      <span className="preview-caption">RESPONSIVE LAYOUT STUDY</span>
-    </div>
-  );
-}
-
-function ProjectCard({ project }) {
-  return (
-    <article className="project-card">
-      <ProjectPreview kind={project.kind} />
-      <div className="project-details">
-        <div className="project-meta"><span>{project.category}</span><span>/{project.number}</span></div>
-        <h3>{project.name}</h3>
-        <p className="project-description">{project.description}</p>
-        <ul className="project-highlights">
-          {project.highlights.map((highlight) => <li key={highlight}><span aria-hidden="true">↗</span>{highlight}</li>)}
-        </ul>
-        <div className="tag-list" aria-label={`${project.name} technologies`}>
-          {project.technologies.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
-        </div>
-        <div className="project-actions">
-          {project.links.map((link) => (
-            <ExternalLink
-              className={`button ${link.kind === "primary" ? "button-primary" : "button-secondary"}`}
-              href={link.href}
-              key={link.href}
-            >
-              {link.label} <span aria-hidden="true">↗</span>
-            </ExternalLink>
-          ))}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function Projects() {
-  return (
-    <section className="section-shell section-projects" id="projects">
-      <div className="container">
-        <SectionHeading
-          eyebrow="Selected work"
-          title={<>Things I&apos;ve <span className="text-accent">built.</span></>}
-          description="A selection of personal projects exploring frontend craft and full-stack application workflows."
-          number="03"
-        />
-        <p className="preview-note"><span aria-hidden="true">✳</span> Project illustrations are CSS previews, not product screenshots.</p>
-        <div className="projects-grid">
-          {projects.map((project) => <ProjectCard key={project.number} project={project} />)}
         </div>
       </div>
     </section>
@@ -376,34 +227,9 @@ function Contact() {
               )}
             </div>
           </div>
-          <p className="contact-note">Email and LinkedIn links will be enabled once you add the real details in the site configuration.</p>
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="container footer-main">
-        <div className="footer-identity"><a className="brand" href="#home"><span className="brand-mark" aria-hidden="true">v.</span><span>vishal<span className="brand-dot">.</span></span></a><p>{siteConfig.title}</p></div>
-        <nav className="footer-nav" aria-label="Footer navigation">
-          {navigation.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}
-        </nav>
-        <div className="footer-social">
-          <ExternalLink href={siteConfig.links.github}>GitHub <span aria-hidden="true">↗</span></ExternalLink>
-          {siteConfig.links.linkedin ? (
-            <ExternalLink href={siteConfig.links.linkedin}>LinkedIn <span aria-hidden="true">↗</span></ExternalLink>
-          ) : (
-            <span className="footer-placeholder">{siteConfig.placeholders.linkedin}</span>
-          )}
-          <ExternalLink href={siteConfig.links.fiverrReact}>React gig <span aria-hidden="true">↗</span></ExternalLink>
-          <ExternalLink href={siteConfig.links.fiverrBugFixing}>Bug-fixing gig <span aria-hidden="true">↗</span></ExternalLink>
-        </div>
-      </div>
-      <div className="container footer-bottom"><span>© {new Date().getFullYear()} {siteConfig.name}</span><span>Designed &amp; built with care <b>✳</b></span><a href="#home">Back to top ↑</a></div>
-    </footer>
   );
 }
 

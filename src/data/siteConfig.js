@@ -7,13 +7,16 @@ export const siteConfig = {
   graduationYear: "2024",
   links: {
     github: "https://github.com/perfectcse",
-    linkedin: "https://www.linkedin.com/in/vishal-mis-9623luck/",
+    linkedin: "",
     email: "vm938359@gmail.com",
     fiverrReact: "https://www.fiverr.com/s/BbbYrQk",
     fiverrBugFixing: "https://www.fiverr.com/s/yee3NKA",
   },
+  linkCandidates: {
+    linkedin: "https://www.linkedin.com/in/vishal-mis-9623luck/",
+  },
   placeholders: {
-    linkedin: "LinkedIn profile — add your URL",
+    linkedin: "LinkedIn profile — URL awaiting verification",
     email: "Professional email — add your address",
   },
 };
