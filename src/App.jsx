@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { siteConfig } from "./data/siteConfig.js";
 import { services, skills } from "./data/projects.js";
 import ExternalLink from "./components/ExternalLink.jsx";
@@ -18,13 +19,13 @@ function Hero() {
             I&apos;m {siteConfig.name}, a web developer focused on building responsive websites and practical web applications using JavaScript, React.js, and the MERN stack.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↘</span></a>
+            <Link className="button button-primary" to="/projects">Explore my projects <span aria-hidden="true">↘</span></Link>
             <ExternalLink className="button button-secondary" href={siteConfig.links.fiverrReact}>
               Hire me on Fiverr <span aria-hidden="true">↗</span>
             </ExternalLink>
-            <a className="button button-secondary" href="#contact">
+            <Link className="button button-secondary" to="/contact">
               Contact me <span aria-hidden="true">↘</span>
-            </a>
+            </Link>
           </div>
           <nav className="hero-socials" aria-label="Profile links">
             <ExternalLink href={siteConfig.links.github}>GitHub <span aria-hidden="true">↗</span></ExternalLink>
@@ -65,7 +66,7 @@ function Hero() {
           <div className="art-caption"><span className="caption-line" /> A little thought, a lot of care.</div>
         </div>
       </div>
-      <a className="scroll-cue" href="#about"><span /> Scroll to explore</a>
+      <Link className="scroll-cue" to="/about"><span /> Meet the developer</Link>
     </section>
   );
 }
@@ -90,7 +91,7 @@ function About() {
             <p>
               I&apos;m currently looking for full-time developer opportunities and am also open to suitable freelance projects.
             </p>
-            <a className="text-link" href="#contact">A bit more? Let&apos;s connect <span aria-hidden="true">↗</span></a>
+            <Link className="text-link" to="/contact">A bit more? Let&apos;s connect <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
         <div className="about-facts">
@@ -233,18 +234,31 @@ function Contact() {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Services />
-        <ProcessAndEducation />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<><About /><ProcessAndEducation /></>} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
       <Footer />
     </>
