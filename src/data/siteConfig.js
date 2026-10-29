@@ -7,8 +7,8 @@ export const siteConfig = {
   graduationYear: "2024",
   links: {
     github: "https://github.com/perfectcse",
-    linkedin: "",
-    email: "",
+    linkedin: "https://www.linkedin.com/in/vishal-mis-9623luck/",
+    email: "vm938359@gmail.com",
     fiverrReact: "https://www.fiverr.com/s/BbbYrQk",
     fiverrBugFixing: "https://www.fiverr.com/s/yee3NKA",
   },
