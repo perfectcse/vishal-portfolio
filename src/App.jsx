@@ -107,8 +107,8 @@ function Hero() {
           <div className="portrait-frame">
             <img
               src="/images/vishal-profile.jpeg"
-              alt="Vishal Mishra - React.js Developer"
-              fetchPriority="high"
+              alt="Vishal Mishra - Developer Profile"
+              fetchpriority="high"
               decoding="async"
             />
           </div>
