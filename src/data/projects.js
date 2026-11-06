@@ -23,7 +23,7 @@ export const projects = [
   {
     number: "02",
     name: "Cricket Blog",
-    category: "React application",
+    category: "Full-stack application",
     description:
       "A cricket-focused website with dedicated home, blog, and about pages, plus blog-post management backed by an API.",
     highlights: [
@@ -31,7 +31,7 @@ export const projects = [
       "Create, edit, and delete blog posts",
       "React frontend with API integration",
     ],
-    technologies: ["React", "Vite", "JavaScript", "Axios", "CSS"],
+    technologies: ["React", "Vite", "Node.js", "Express", "MongoDB", "Mongoose"],
     kind: "cricket",
     links: [
       {
@@ -115,22 +115,26 @@ export const skills = [
   {
     name: "Frontend",
     number: "01",
-    items: ["HTML5", "CSS3", "JavaScript ES6+", "React.js", "React Hooks", "React Router", "Responsive design"],
+    icon: "</>",
+    items: ["HTML5", "CSS3", "JavaScript ES6+", "React.js", "Tailwind CSS", "React Hooks", "React Router", "Responsive design"],
   },
   {
     name: "Backend",
     number: "02",
+    icon: "{ }",
     items: ["Node.js", "Express.js", "REST APIs", "JWT authentication"],
   },
   {
     name: "Databases",
     number: "03",
+    icon: "◉",
     items: ["MongoDB", "MySQL"],
   },
   {
     name: "Tools",
     number: "04",
-    items: ["Git", "GitHub", "VS Code", "Vite", "Postman"],
+    icon: "⌘",
+    items: ["Git", "GitHub", "VS Code", "Vite", "Postman", "MongoDB Compass", "Vercel", "Render", "Netlify"],
   },
 ];
 

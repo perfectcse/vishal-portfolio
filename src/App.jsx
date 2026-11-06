@@ -6,6 +6,68 @@ import ExternalLink from "./components/ExternalLink.jsx";
 import SectionHeading from "./components/SectionHeading.jsx";
 import { Footer, Navbar } from "./components/SiteChrome.jsx";
 import Projects from "./sections/Projects.jsx";
+import Experience from "./sections/Experience.jsx";
+import Education from "./sections/Education.jsx";
+
+const pageMetadata = {
+  "/": {
+    title: "Vishal Mishra — React.js & MERN Stack Developer",
+    description: "Vishal Mishra is a React.js and MERN stack developer building responsive web applications. Explore projects, skills, experience, and contact details.",
+  },
+  "/about": {
+    title: "About Vishal Mishra — React.js Developer",
+    description: "Learn about Vishal Mishra's computer science background, frontend interests, and project-based web development experience.",
+  },
+  "/skills": {
+    title: "Technical Skills — Vishal Mishra",
+    description: "Explore Vishal Mishra's frontend, backend, database, and development tools skills.",
+  },
+  "/projects": {
+    title: "Projects — Vishal Mishra",
+    description: "Browse Vishal Mishra's React.js and MERN stack projects, including AutoService, Cricket Blog, and Contact Book.",
+  },
+  "/experience": {
+    title: "Experience — Vishal Mishra",
+    description: "Explore Vishal Mishra's documented project-based development experience and working process.",
+  },
+  "/education": {
+    title: "Education — Vishal Mishra",
+    description: "Vishal Mishra's education: B.Tech in Computer Science from AKTU, graduated in 2024.",
+  },
+  "/services": {
+    title: "Services — Vishal Mishra",
+    description: "React.js development, responsive landing pages, and frontend bug-fixing services from Vishal Mishra.",
+  },
+  "/contact": {
+    title: "Contact Vishal Mishra",
+    description: "Contact Vishal Mishra about React.js developer roles and suitable freelance projects.",
+  },
+};
+
+function RouteMetadata() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const metadata = pageMetadata[pathname] || pageMetadata["/"];
+    document.title = metadata.title;
+
+    for (const [selector, value] of [
+      ['meta[name="description"]', metadata.description],
+      ['meta[property="og:title"]', metadata.title],
+      ['meta[property="og:description"]', metadata.description],
+      ['meta[name="twitter:title"]', metadata.title],
+      ['meta[name="twitter:description"]', metadata.description],
+    ]) {
+      document.querySelector(selector)?.setAttribute("content", value);
+    }
+
+    const canonicalUrl = `${window.location.origin}${pathname}`;
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonicalUrl);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
+  }, [pathname]);
+
+  return null;
+}
 
 function Hero() {
   return (
@@ -45,7 +107,8 @@ function Hero() {
           <div className="portrait-frame">
             <img
               src="/images/vishal-profile.jpeg"
-              alt="Vishal Mishra - Developer Profile"
+              alt="Vishal Mishra - React.js Developer"
+              fetchPriority="high"
               decoding="async"
             />
           </div>
@@ -74,10 +137,10 @@ function About() {
           </p>
           <div className="about-copy">
             <p>
-              With a B.Tech in Computer Science, I&apos;ve been building my skills across frontend and full-stack development. I work with JavaScript, React.js, and the MERN stack, with an interest in responsive design, usability, and solving practical problems through code.
+              With a B.Tech in Computer Science from {siteConfig.educationInstitution}, I focus on frontend and full-stack development. I work with JavaScript, React.js, and the MERN stack, with an interest in responsive design, usability, and solving practical problems through code.
             </p>
             <p>
-              I&apos;m currently looking for full-time developer opportunities and am also open to suitable freelance projects.
+              My hands-on experience comes from building practical web applications, exploring complete user flows, and refining interfaces across screen sizes. I&apos;m currently looking for developer opportunities and suitable freelance projects.
             </p>
             <Link className="text-link" to="/contact">A bit more? Let&apos;s connect <span aria-hidden="true">↗</span></Link>
           </div>
@@ -106,7 +169,7 @@ function Skills() {
         <div className="skills-grid">
           {skills.map((group) => (
             <article className="skill-card" key={group.name}>
-              <div className="skill-card-top"><span>{group.number}</span><span aria-hidden="true">↗</span></div>
+              <div className="skill-card-top"><span>{group.number}</span><span className="skill-icon" aria-hidden="true">{group.icon}</span></div>
               <h3>{group.name}</h3>
               <ul>
                 {group.items.map((skill) => <li key={skill}>{skill}</li>)}
@@ -127,7 +190,7 @@ function Services() {
           eyebrow="Freelance services"
           title={<>Good work starts<br /><span className="text-muted">with a good conversation.</span></>}
           description="Thoughtful frontend help for a clear, agreed scope—alongside my search for full-time work."
-          number="04"
+          number="07"
         />
         <div className="services-list">
           {services.map((service) => (
@@ -145,7 +208,7 @@ function Services() {
   );
 }
 
-function ProcessAndEducation() {
+function WorkingProcess() {
   const steps = [
     ["01", "Discuss requirements", "Align on the goal, audience, and what the work needs to do."],
     ["02", "Plan and implement", "Break the scope into clear pieces and build with care."],
@@ -154,26 +217,16 @@ function ProcessAndEducation() {
   ];
 
   return (
-    <section className="section-shell section-process" id="education">
-      <div className="container process-grid">
-        <div>
-          <SectionHeading eyebrow="How I work" title={<>A clear path<br /><span className="text-muted">from idea to done.</span></>} number="05" />
-          <div className="process-list">
-            {steps.map(([number, title, description]) => (
-              <article className="process-step" key={number}>
-                <span>{number}</span><div><h3>{title}</h3><p>{description}</p></div>
-              </article>
-            ))}
-          </div>
+    <section className="section-shell section-process">
+      <div className="container">
+        <SectionHeading eyebrow="How I work" title={<>A clear path<br /><span className="text-muted">from idea to done.</span></>} number="05" />
+        <div className="process-list">
+          {steps.map(([number, title, description]) => (
+            <article className="process-step" key={number}>
+              <span>{number}</span><div><h3>{title}</h3><p>{description}</p></div>
+            </article>
+          ))}
         </div>
-        <aside className="education-card">
-          <p className="eyebrow">Education &amp; projects</p>
-          <div className="education-mark" aria-hidden="true">B.Tech</div>
-          <div className="education-rule" />
-          <h3>Computer Science</h3>
-          <p>{siteConfig.education}</p>
-          <div className="education-bottom"><span>Graduated</span><strong>{siteConfig.graduationYear}</strong></div>
-        </aside>
       </div>
     </section>
   );
@@ -184,7 +237,7 @@ function Contact() {
     <section className="section-shell section-contact" id="contact">
       <div className="container">
         <div className="contact-card">
-          <p className="eyebrow"><span>06</span> / Get in touch</p>
+          <p className="eyebrow"><span>08</span> / Get in touch</p>
           <div className="contact-content">
             <div>
               <h2>Have something<br />good in mind<span className="text-accent">?</span></h2>
@@ -236,13 +289,16 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <RouteMetadata />
       <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/about" element={<><About /><ProcessAndEducation /></>} />
+          <Route path="/about" element={<About />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/experience" element={<><Experience /><WorkingProcess /></>} />
+          <Route path="/education" element={<Education />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />

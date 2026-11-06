@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vishal-portfolio-w196.onrender.com/sitemap.xml

@@ -4,6 +4,7 @@ export const siteConfig = {
   title: "React.js Developer | MERN Stack Developer | Frontend Developer",
   location: "Bengaluru, India",
   education: "B.Tech in Computer Science",
+  educationInstitution: "AKTU",
   graduationYear: "2024",
   links: {
     github: "https://github.com/perfectcse",
@@ -26,6 +27,8 @@ export const navigation = [
   { label: "About", href: "/about" },
   { label: "Skills", href: "/skills" },
   { label: "Projects", href: "/projects" },
+  { label: "Experience", href: "/experience" },
+  { label: "Education", href: "/education" },
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];
