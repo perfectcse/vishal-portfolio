@@ -4,6 +4,34 @@ import ExternalLink from "../components/ExternalLink.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 
 function ProjectPreview({ kind }) {
+  if (kind === "cricket") {
+    return (
+      <div className="preview preview-cricket" aria-hidden="true">
+        <div className="cricket-article">
+          <span className="cricket-kicker">CRICKET / THE LATEST</span>
+          <strong />
+          <strong className="short-line" />
+          <span className="cricket-copy" />
+          <span className="cricket-button" />
+        </div>
+        <span className="preview-caption">CRICKET BLOG</span>
+      </div>
+    );
+  }
+  if (kind === "contact-book") {
+    return (
+      <div className="preview preview-contact-book" aria-hidden="true">
+        <div className="contact-book-window">
+          <span className="contact-book-title">Your contacts</span>
+          <span className="contact-book-search" />
+          <span className="contact-book-row"><i /> <b /><small /></span>
+          <span className="contact-book-row"><i /> <b /><small /></span>
+          <span className="contact-book-row"><i /> <b /><small /></span>
+        </div>
+        <span className="preview-caption">CONTACT MANAGEMENT</span>
+      </div>
+    );
+  }
   if (kind === "rides") {
     return (
       <div className="preview preview-rides" aria-hidden="true">

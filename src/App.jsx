@@ -13,13 +13,13 @@ function Hero() {
       <div className="hero-grid container">
         <div className="hero-copy">
           <p className="availability"><span className="status-dot" /> Open to full-time opportunities</p>
-          <p className="eyebrow hero-label">React.js Developer <span className="eyebrow-separator">/</span> MERN Stack Developer <span className="eyebrow-separator">/</span> Frontend Developer</p>
-          <h1>Building responsive, modern web experiences <span>with React.js.</span></h1>
+          <p className="eyebrow hero-label">Hello, I&apos;m {siteConfig.name}</p>
+          <h1>Building modern, responsive web experiences <span>with React.js.</span></h1>
           <p className="hero-description">
-            I&apos;m {siteConfig.name}, a web developer focused on building responsive websites and practical web applications using JavaScript, React.js, and the MERN stack.
+            I focus on building responsive websites and practical web applications using JavaScript, React.js, and the MERN stack.
           </p>
           <div className="hero-actions">
-            <Link className="button button-primary" to="/projects">Explore my projects <span aria-hidden="true">↘</span></Link>
+            <Link className="button button-primary" to="/projects">View my projects <span aria-hidden="true">↘</span></Link>
             <ExternalLink className="button button-secondary" href={siteConfig.links.fiverrReact}>
               Hire me on Fiverr <span aria-hidden="true">↗</span>
             </ExternalLink>
@@ -37,32 +37,20 @@ function Hero() {
             )}
           </nav>
         </div>
-        <div className="hero-art" aria-hidden="true">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="editor-window">
-            <div className="editor-topbar">
-              <div className="window-dots" aria-hidden="true"><i /><i /><i /></div>
-              <span>portfolio.jsx</span>
-              <span className="editor-status">●</span>
-            </div>
-            <div className="editor-body" aria-hidden="true">
-              <div className="line-numbers">01<br />02<br />03<br />04<br />05<br />06<br />07<br />08</div>
-              <div className="code-lines">
-                <p><span className="code-purple">const</span> <span className="code-blue">developer</span> = {"{"}</p>
-                <p className="indent"><span className="code-aqua">name</span>: <span className="code-orange">&quot;Vishal&quot;</span>,</p>
-                <p className="indent"><span className="code-aqua">focus</span>: <span className="code-orange">&quot;React.js&quot;</span>,</p>
-                <p className="indent"><span className="code-aqua">builds</span>: [</p>
-                <p className="indent double-indent"><span className="code-orange">&quot;websites&quot;</span>,</p>
-                <p className="indent double-indent"><span className="code-orange">&quot;web apps&quot;</span></p>
-                <p className="indent">],</p>
-                <p>{"};"}<span className="cursor" /></p>
-              </div>
-            </div>
-            <div className="editor-footer"><span>JavaScript React</span><span>UTF-8&nbsp;&nbsp; Ln 08, Col 3</span></div>
+        <div className="hero-art">
+          <div className="portrait-orbits" aria-hidden="true">
+            <div className="orbit orbit-one" />
+            <div className="orbit orbit-two" />
+          </div>
+          <div className="portrait-frame">
+            <img
+              src="/images/vishal-profile.jpeg"
+              alt="Vishal Mishra - Developer Profile"
+              decoding="async"
+            />
           </div>
           <div className="floating-chip chip-react"><span>⚛</span> React.js</div>
-          <div className="floating-chip chip-code"><span aria-hidden="true">{"</>"}</span> Clean code</div>
+          <div className="floating-chip chip-code"><span aria-hidden="true">{"</>"}</span> MERN stack</div>
           <div className="art-caption"><span className="caption-line" /> A little thought, a lot of care.</div>
         </div>
       </div>

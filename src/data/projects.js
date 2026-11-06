@@ -22,6 +22,48 @@ export const projects = [
   },
   {
     number: "02",
+    name: "Cricket Blog",
+    category: "React application",
+    description:
+      "A cricket-focused website with dedicated home, blog, and about pages, plus blog-post management backed by an API.",
+    highlights: [
+      "Dedicated cricket blog and content pages",
+      "Create, edit, and delete blog posts",
+      "React frontend with API integration",
+    ],
+    technologies: ["React", "Vite", "JavaScript", "Axios", "CSS"],
+    kind: "cricket",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/perfectcse/Cricket",
+        kind: "primary",
+      },
+    ],
+  },
+  {
+    number: "03",
+    name: "Contact Book",
+    category: "Full-stack application",
+    description:
+      "A MERN contact-management app for creating, searching, viewing, updating, and deleting contacts through a responsive interface.",
+    highlights: [
+      "Contact search and CRUD workflows",
+      "MongoDB-backed REST API",
+      "Responsive React interface",
+    ],
+    technologies: ["MongoDB", "Express", "React", "Node.js", "Mongoose"],
+    kind: "contact-book",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/perfectcse/contact_book",
+        kind: "primary",
+      },
+    ],
+  },
+  {
+    number: "04",
     name: "Responsive Landing Page",
     category: "Frontend website",
     description:
@@ -42,7 +84,7 @@ export const projects = [
     ],
   },
   {
-    number: "03",
+    number: "05",
     name: "Holi Wishes",
     category: "React single-page application",
     description:

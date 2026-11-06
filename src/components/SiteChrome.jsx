@@ -23,7 +23,7 @@ export function Navbar() {
       <nav className="nav-shell container" aria-label="Main navigation" onKeyDown={handleKeyDown}>
         <Link className="brand" to="/" onClick={closeMenu} aria-label={`${siteConfig.name}, home`}>
           <span className="brand-mark" aria-hidden="true">v.</span>
-          <span>vishal<span className="brand-dot">.</span></span>
+          <span>Vishal<span className="brand-dot">.</span></span>
         </Link>
         <button
           ref={menuToggleRef}
@@ -61,7 +61,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-main">
-        <div className="footer-identity"><Link className="brand" to="/"><span className="brand-mark" aria-hidden="true">v.</span><span>vishal<span className="brand-dot">.</span></span></Link><p>{siteConfig.title}</p></div>
+        <div className="footer-identity"><Link className="brand" to="/"><span className="brand-mark" aria-hidden="true">v.</span><span>Vishal<span className="brand-dot">.</span></span></Link><p>{siteConfig.title}</p></div>
         <nav className="footer-nav" aria-label="Footer navigation">
           {navigation.map((item) => <Link to={item.href} key={item.href}>{item.label}</Link>)}
         </nav>
