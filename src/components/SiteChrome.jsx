@@ -117,7 +117,7 @@ export function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</span>
-        <span>Built with React.js · Designed &amp; built with care <b>✳</b></span>
+        <span>Built with React.js · Designed &amp; built with care <b aria-hidden="true">✳</b></span>
         <Link to="/">Back to home ↑</Link>
       </div>
     </footer>

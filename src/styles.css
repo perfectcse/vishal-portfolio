@@ -12,6 +12,7 @@
   --color-text: #4B5563;
   --color-text-muted: #687581;
   --color-primary: #218765;
+  --color-primary-strong: #207F60;
   --color-primary-hover: #176B50;
   --color-primary-light: #DDF3E9;
   --color-border: #E5EBE8;
@@ -215,7 +216,7 @@ button {
 }
 
 .button-primary {
-  background: var(--color-primary);
+  background: var(--color-primary-strong);
   box-shadow: 0 5px 13px rgba(33, 135, 101, 0.16);
   color: #FFFFFF;
 }
@@ -531,7 +532,7 @@ h1 span {
 
 .section-heading .eyebrow span,
 .contact-card > .eyebrow span {
-  color: var(--color-primary);
+  color: var(--color-primary-strong);
 }
 
 h2 {
@@ -1154,7 +1155,7 @@ h2 {
 }
 
 .project-meta span:last-child {
-  color: var(--color-primary);
+  color: var(--color-primary-strong);
 }
 
 .project-details h3 {
@@ -1247,7 +1248,7 @@ h2 {
 .service-number {
   align-self: start;
   padding-top: 5px;
-  color: var(--color-primary);
+  color: var(--color-primary-strong);
   font: 13px var(--mono);
 }
 
@@ -1330,7 +1331,7 @@ h2 {
 
 .experience-content > .eyebrow span {
   padding-left: 5px;
-  color: var(--color-primary);
+  color: var(--color-primary-strong);
 }
 
 .experience-content h3 {
@@ -1394,7 +1395,7 @@ h2 {
 
 .process-step > span {
   padding-top: 3px;
-  color: var(--color-primary);
+  color: var(--color-primary-strong);
   font: 13px var(--mono);
 }
 
