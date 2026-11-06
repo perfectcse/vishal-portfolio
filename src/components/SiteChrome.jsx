@@ -61,22 +61,65 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-main">
-        <div className="footer-identity"><Link className="brand" to="/"><span className="brand-mark" aria-hidden="true">v.</span><span>Vishal<span className="brand-dot">.</span></span></Link><p>{siteConfig.title}</p></div>
-        <nav className="footer-nav" aria-label="Footer navigation">
-          {navigation.map((item) => <Link to={item.href} key={item.href}>{item.label}</Link>)}
+        <div className="footer-brand">
+          <Link className="brand" to="/" aria-label={`${siteConfig.name}, home`}>
+            <span className="brand-mark" aria-hidden="true">v.</span>
+            <span>Vishal<span className="brand-dot">.</span></span>
+          </Link>
+          <p className="footer-role">{siteConfig.title}</p>
+          <p className="footer-intro">
+            Building modern, responsive and user-friendly web applications with React.js and the MERN stack.
+          </p>
+        </div>
+
+        <section className="footer-cta" aria-labelledby="footer-cta-heading">
+          <p className="eyebrow">Have a project in mind?</p>
+          <h2 id="footer-cta-heading">Let&apos;s build something great together.</h2>
+          <p>I&apos;m open to React.js, frontend and MERN Stack development opportunities. Let&apos;s connect.</p>
+          <Link className="button button-primary footer-cta-button" to="/contact">
+            Get in Touch <span aria-hidden="true">↗</span>
+          </Link>
+        </section>
+
+        <nav className="footer-column" aria-label="Footer navigation">
+          <h2 className="footer-column-heading">Quick links</h2>
+          <div className="footer-nav">
+            {navigation.map((item) => (
+              <Link to={item.href} key={item.href}>{item.label}</Link>
+            ))}
+          </div>
         </nav>
-        <div className="footer-social">
-          <ExternalLink href={siteConfig.links.github}>GitHub <span aria-hidden="true">↗</span></ExternalLink>
-          {siteConfig.links.linkedin ? (
-            <ExternalLink href={siteConfig.links.linkedin}>LinkedIn <span aria-hidden="true">↗</span></ExternalLink>
-          ) : (
-            <span className="footer-placeholder">{siteConfig.placeholders.linkedin}</span>
-          )}
-          <ExternalLink href={siteConfig.links.fiverrReact}>React gig <span aria-hidden="true">↗</span></ExternalLink>
-          <ExternalLink href={siteConfig.links.fiverrBugFixing}>Bug-fixing gig <span aria-hidden="true">↗</span></ExternalLink>
+
+        <div className="footer-column" aria-labelledby="footer-connections-heading">
+          <h2 className="footer-column-heading" id="footer-connections-heading">Connect</h2>
+          <div className="footer-social">
+            <ExternalLink href={siteConfig.links.github} aria-label="Visit Vishal Mishra on GitHub">
+              GitHub <span aria-hidden="true">↗</span>
+            </ExternalLink>
+            {siteConfig.links.linkedin ? (
+              <ExternalLink href={siteConfig.links.linkedin} aria-label="Connect with Vishal Mishra on LinkedIn">
+                LinkedIn <span aria-hidden="true">↗</span>
+              </ExternalLink>
+            ) : (
+              <span className="footer-placeholder">{siteConfig.placeholders.linkedin}</span>
+            )}
+            {siteConfig.links.email ? (
+              <a href={`mailto:${siteConfig.links.email}`} aria-label={`Email Vishal Mishra at ${siteConfig.links.email}`}>
+                {siteConfig.links.email}
+              </a>
+            ) : (
+              <span className="footer-placeholder">{siteConfig.placeholders.email}</span>
+            )}
+            <ExternalLink href={siteConfig.links.fiverrReact}>React gig <span aria-hidden="true">↗</span></ExternalLink>
+            <ExternalLink href={siteConfig.links.fiverrBugFixing}>Bug-fixing gig <span aria-hidden="true">↗</span></ExternalLink>
+          </div>
         </div>
       </div>
-      <div className="container footer-bottom"><span>© {new Date().getFullYear()} {siteConfig.name}</span><span>Designed &amp; built with care <b>✳</b></span><Link to="/">Back to home ↑</Link></div>
+      <div className="container footer-bottom">
+        <span>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</span>
+        <span>Built with React.js · Designed &amp; built with care <b>✳</b></span>
+        <Link to="/">Back to home ↑</Link>
+      </div>
     </footer>
   );
 }
